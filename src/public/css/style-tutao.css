@@ -1,0 +1,44 @@
+.form-control {
+    border: 1px solid #d2d6da;
+    padding: 10px;
+}
+.card {
+    margin-bottom:20px;
+    color: #000;
+}
+.card-header {
+    border-radius: 10px!important;
+}
+
+.card .inner-card {
+    padding-bottom: 1.5rem;
+}
+.card .inner-card .name {
+    font-weight: 700;
+}
+.btn-like {
+    border: 0;
+    padding-right: 30px;
+    position:relative;
+}
+.btn-like:after {
+    content: "";
+    background-image:url(../img/like.png);
+    background-position: 0px -297px;
+    background-size: auto;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+.message-show {
+    overflow: auto;
+    height: calc(100vh - 390px);
+}
+
+button.sendButton.btn.btn-primary {
+    width: 50%;
+}

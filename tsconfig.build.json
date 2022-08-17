@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "express-typeorm-phonebook/node_modules", "test", "dist", "**/*spec.ts"]
+}
