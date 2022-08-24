@@ -13,30 +13,21 @@ import path from "path";
 import session from "express-session";
 import chatRouter from "./src/routes/chat.router";
 import {Comment} from './src/schema/comment'
-
-
-
-
-const port = 3000;
-
-const app = express();
-
 import http from 'http';
-const server = http.createServer(app);
 import {Server} from "socket.io";
-
-
 import {Status} from "./src/schema/status.model";
 import Message from "./src/schema/message";
 
+const  PORT = process.env.PORT || 3000;
+const app = express();
+const server = http.createServer(app);
 const io = new Server(server);
-
 
 //set view engine
 app.set('view engine', 'ejs');
 app.set("views", './src/views')
 
-//cau hinh bien moi truong + connect DB + thang sua truoc 1 buoc
+//evn+connect DB
 dotenv.config()
 mongoose.connect(process.env.MONGODB_URL, () => {
     console.log("connect success")
@@ -61,7 +52,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //cac router
-
 app.use("/", startRoutes);
 app.use("/auth", authRoutes);
 app.use('/user', userRoutes)
@@ -104,11 +94,6 @@ io.sockets.on('connection', (socket) => {
 });
 
 
-
-
-
-
-
 //cac router bi loi trong qua trinh chay auto vao day + ve slack
 app.use(errorToSlack({webhookUri: "https://hooks.slack.com/services/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"}))
 app.use((err, req, res, next) => {
@@ -116,10 +101,8 @@ app.use((err, req, res, next) => {
         res.json({message: err.message})
     }
 })
-
-
-server.listen(port, () => {
-    console.log("http://localhost:" + port)
+server.listen(PORT, () => {
+    console.log("http://localhost:" + PORT)
 })
 
 
